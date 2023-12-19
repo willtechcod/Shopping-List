@@ -1,6 +1,6 @@
 import { StyleSheet, TextInput, View } from 'react-native';
 
-export default function Input({placeholder,keyboardType,secureTextEntry}) {
+export default function Input({placeholder,keyboardType,secureTextEntry, onChangeText}) {
  return (
    <View style={style.conatiner}>
     <TextInput
@@ -9,6 +9,7 @@ export default function Input({placeholder,keyboardType,secureTextEntry}) {
         placeholderTextColor='#1d1d2e'
         keyboardType={keyboardType}
         secureTextEntry={secureTextEntry}
+        onChangeText={onChangeText}
         style={style.Input}
     />
    </View>
