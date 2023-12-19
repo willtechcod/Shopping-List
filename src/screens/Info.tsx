@@ -1,7 +1,15 @@
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
-import { Feather } from '@expo/vector-icons'
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Alert } from 'react-native';
+import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function Info() {
+
+  const navigation = useNavigation();
+
+  function handleNext(){
+    navigation.navigate('SignIn');
+  }
  return (
    <SafeAreaView style={style.container}>
     <Text style={style.title}>Shopping List</Text>
@@ -13,7 +21,7 @@ export default function Info() {
       </Text>
       </View>
       <View style={{marginTop: 280}}>
-        <TouchableOpacity activeOpacity={0.7} style={style.button}>
+        <TouchableOpacity onPress={handleNext} activeOpacity={0.7} style={style.button}>
           <Text style={style.buttonText}>Avancar</Text>
           <Feather  name='chevron-right'size={26} color="#1D1D2E" />
         </TouchableOpacity>

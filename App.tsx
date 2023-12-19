@@ -11,7 +11,11 @@ export default function App() {
   return (
     < >
       {fontsLoaded ? <Routes /> : <Preload />}
-      <StatusBar style="auto" />
+      <StatusBar 
+        style="auto"
+        backgroundColor="transparent"
+        translucent
+      />
     </>
   );
 }
