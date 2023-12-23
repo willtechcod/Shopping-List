@@ -1,5 +1,6 @@
 import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Alert } from 'react-native';
 import Input from '../components/Input';
+import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 
@@ -13,11 +14,15 @@ export default function SignIn() {
     navigation.navigate('SignUp');
   }
 
-  function handleSignin(){
+  function handleSignIn(){
     if (!email || !password) {
       return Alert.alert('Entrar', 'Informe e-mail e senha.');
     }
-    setIsLoading(true);
+    setIsLoading(true)
+    auth()
+    .signInWithEmailAndPassword(email, password)
+    .catch((error) => console.log(error))
+    .finally(() => setIsLoading(false))
   }
 
  return (
@@ -38,14 +43,14 @@ export default function SignIn() {
       onChangeText={setPassword}
       />
       <TouchableOpacity 
-      onPress={handleSignin} 
+      onPress={handleSignIn} 
       activeOpacity={0.7} 
       style={style.button}
       >
         <Text style={style.buttonText}>Entrar</Text>
     </TouchableOpacity>
 
-    <TouchableOpacity onPress={handleSignUp} style={style.link}>
+    <TouchableOpacity  onPress={handleSignUp} style={style.link}>
         <Text style={style.linkText}>Ainda não pussui uma conta? Cadastre-se</Text>
       </TouchableOpacity>
 

@@ -1,5 +1,6 @@
-import { Text, View, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, SafeAreaView, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import Input from '../components/Input';
+import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 
@@ -7,10 +8,28 @@ export default function SignUp() {
   const navigation = useNavigation();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const [confirmePassword, setConfirmePassword] = useState();
 
   function handleSignIn(){
     navigation.navigate('SignIn');
+  }
+
+  function handleNewAccount(){
+    if (!email || !password) {
+      return Alert.alert('Cadastrar', 'Informe e-mail e senha.');
+    }
+
+    if (confirmePassword !== password) {
+      return Alert.alert('Cadastrar', 'A confirmação de senha está diferente da senha.');
+    }
+
+    setIsLoading(true);
+    auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then(() => Alert.alert('Conta', 'Cadastrado com sucesso!'))
+    .catch((error) => console.log(error))
+    .finally(() => setIsLoading(false))
   }
  return (
    <SafeAreaView style={styles.container}>
@@ -35,7 +54,7 @@ export default function SignUp() {
       secureTextEntry={false}
       onChangeText={confirmePassword}
     />
-    <TouchableOpacity activeOpacity={0.7} style={styles.button}>
+    <TouchableOpacity onPress={handleNewAccount} activeOpacity={0.7} style={styles.button}>
         <Text style={styles.buttonText}>Cadstrar</Text>
     </TouchableOpacity>
 
