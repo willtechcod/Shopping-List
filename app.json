@@ -1,10 +1,21 @@
 {
   "expo": {
-    "name": "Shopping List",
+    "name": "Shopping-List",
     "slug": "Shopping-List",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "plugins": [
+      "@react-native-firebase/app"
+    ],
+    "android": {
+      "package": "com.shoppinglist",
+      "googleServicesFile": "./google-services.json"
+    },
+    "ios": {
+      "bundleIdentifier": "com.shoppinglist",
+      "googleServicesFile": "./GoogleService-Info.plist"
+    }
   }
 }

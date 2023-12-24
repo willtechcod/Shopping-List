@@ -1,15 +1,19 @@
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
+import { useState } from 'react';
+import List from '../components/List';
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(false);
+
  return (
    <SafeAreaView style={styles.container}>
     <View style={styles.content}>
       <Text style={styles.title}>Sua Lista de Hoje.</Text>
     <Header />
     </View>
-    <Loading/>
+    {isLoading ? <Loading/> : <List/>}
    </SafeAreaView>
   );
 }
