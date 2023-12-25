@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, 
     View, 
     StyleSheet, 
@@ -8,11 +8,12 @@ import { Text,
  import { useNavigation } from '@react-navigation/native';
 
 import { CheckBox } from '@rneui/themed';
-
+import Loading from './Loading';
 
 
 export default function List() {
     const navigation = useNavigation();
+    const [isLoading, setIsLoading] = useState(true);
     const [checked, setChecked] = React.useState(false);
      const toggleCheckbox = () => setChecked(!checked);
 
@@ -44,7 +45,10 @@ export default function List() {
  return (
    <View style={styles.container}>
     <View style={styles.content}>
-    <FlatList
+    {isLoading ? (
+        <Loading />
+    ) : (
+        <FlatList
     data={Data}
     keyExtractor={item => item.id}
     renderItem={({item}) => (
@@ -58,8 +62,11 @@ export default function List() {
            checkedIcon="checkbox-outline"
            uncheckedIcon={'checkbox-blank-outline'}
          />
+            <View style={styles.areaItem}>
             <Text style={styles.text}>{item.item}</Text>
-            <Text style={styles.text}>Qtd: {item.quantity}</Text>
+            <Text style={styles.itemText}>un</Text>
+            <Text style={styles.text}>{item.quantity}</Text>
+            </View>
 
         </TouchableOpacity>
 
@@ -67,6 +74,9 @@ export default function List() {
     ) }
     
     />
+    )
+
+    }
     </View>
     <View style={styles.btnArea}>
         <TouchableOpacity style={styles.btnFinalizar}>
@@ -103,12 +113,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginLeft: 2,
-        marginRight: 6
     },
     text: {
         marginLeft: 16,
         fontWeight: 'bold'
+    },
+    itemText: {
+        marginLeft: 14,
+        fontWeight: 'bold',
+        color: '#CAC6C6',
+        
     },
     btnArea: {
         display: 'flex',
@@ -138,5 +152,10 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: 'bold',
         color: '#1d1d2e',
+    },
+    areaItem: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginLeft: -30
     }
 });

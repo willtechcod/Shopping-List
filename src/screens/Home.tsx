@@ -3,6 +3,8 @@ import Header from '../components/Header';
 import Loading from '../components/Loading';
 import { useState } from 'react';
 import List from '../components/List';
+import MyList from './MyList';
+import NewList from './NewList';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +15,7 @@ export default function Home() {
       <Text style={styles.title}>Sua Lista de Hoje.</Text>
     <Header />
     </View>
-    {isLoading ? <Loading/> : <List/>}
+    <NewList/>
    </SafeAreaView>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
+
 import AppRoutes from "./app.routes";
 import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import Home from "../screens/Home";
