@@ -19,10 +19,15 @@ export default function SignIn() {
       return Alert.alert('Entrar', 'Informe e-mail e senha.');
     }
     setIsLoading(true)
+    
     auth()
     .signInWithEmailAndPassword(email, password)
     .catch((error) => console.log(error))
     .finally(() => setIsLoading(false))
+  }
+
+  function handleSignGoogle (){
+   
   }
 
  return (

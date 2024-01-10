@@ -45,9 +45,7 @@ export default function List() {
  return (
    <View style={styles.container}>
     <View style={styles.content}>
-    {isLoading ? (
-        <Loading />
-    ) : (
+    
         <FlatList
     data={Data}
     keyExtractor={item => item.id}
@@ -74,9 +72,7 @@ export default function List() {
     ) }
     
     />
-    )
-
-    }
+    
     </View>
     <View style={styles.btnArea}>
         <TouchableOpacity style={styles.btnFinalizar}>
