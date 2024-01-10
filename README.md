@@ -1,6 +1,6 @@
 ## Shopping List App
 
-  <img width="100%" src="./github/capa.png">
+  <img width="100%" src="./github/screen.gif">
 
 # :clipboard: Sobre o projeto
 
@@ -11,7 +11,7 @@ Abaixo podemos ver o resultado final do projeto. Espero que gostem!
 
 <br>
 <p align="center">
-  <img alt="MyLinks" src="./github/screen.gif" width="70%"> 
+  <img alt="MyLinks" src="./github/capa.png" width="70%"> 
   </p>
 
 # 🔗 Download do projeto no link abaixo.
