@@ -1,6 +1,6 @@
 ## Shopping List App
 
-  <img width="30%" src="./github/screen.gif">
+  <img width="25%" src="./github/screen.gif">
 
 # :clipboard: Sobre o projeto
 
